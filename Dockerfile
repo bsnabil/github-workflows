@@ -1,5 +1,11 @@
-FROM nginx:stable-alpine3.17-slim
-COPY index.html /usr/share/nginx/html
+# Utiliser l'image Python officielle comme image de base
+FROM python:3.9-slim
 
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Définir le répertoire de travail à l'intérieur du conteneur
+WORKDIR /app
+
+# Copier le fichier Python dans le répertoire de travail du conteneur
+COPY app.py .
+
+# Exécuter le script Python
+CMD ["python", "app.py"]
